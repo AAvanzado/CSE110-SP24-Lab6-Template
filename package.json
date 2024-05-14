@@ -15,3 +15,7 @@
     "verbose": true
   }
 }
+
+"scripts": {
+    "test": "jest"
+}
