@@ -73,9 +73,9 @@ describe('Basic user flow for Website', () => {
     const productItem = await page.$$('product-item');
     const firstProduct = productItem[0];
     const shadowRoot = await firstProduct.getProperty('shadowRoot');
-    const button = await shadowRoot.getProperty('button');
+    const button = await shadowRoot.querySelector('button');
     
-    //await button.click();
+    await button.click();
 
     const buttonTextHandle = await button.getProperty('innerText');
     const buttonText = await buttonTextHandle.jsonValue();
