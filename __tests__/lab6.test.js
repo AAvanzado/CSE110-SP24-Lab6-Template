@@ -71,7 +71,7 @@ describe('Basic user flow for Website', () => {
     // Once you have the innerText property, use innerText.jsonValue() to get the text value of it
 
     const productItem = await page.$$('product-item');
-    const firstProduct = productItem[0]
+    const firstProduct = productItem[0];
     const shadowRoot = await firstProduct.shadowRoot;
     const button = await shadowRoot.querySelector('button');
     await button.click();
