@@ -70,9 +70,9 @@ describe('Basic user flow for Website', () => {
     // Once you have the button, you can click it and check the innerText property of the button.
     // Once you have the innerText property, use innerText.jsonValue() to get the text value of it
 
-    const productItem = await page.$('product-item');
+    const productItem = await page.$$('product-item');
     const shadowRoot = await productItem.shadowRoot;
-    const button = await shadowRoot.$('button');
+    const button = await shadowRoot.$$('button');
     await button.click();
 
     const buttonTextHandle = await button.getProperty('innerText');
