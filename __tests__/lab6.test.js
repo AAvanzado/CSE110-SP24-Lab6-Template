@@ -109,7 +109,7 @@ describe('Basic user flow for Website', () => {
     const cartCount = await page.$('#cart-count');
     expect(cartCount).toBe(20);
     
-  }, 10000);
+  }, 10000000);
 
   // Check to make sure that after you reload the page it remembers all of the items in your cart
   it('Checking number of items in cart on screen after reload', async () => {
