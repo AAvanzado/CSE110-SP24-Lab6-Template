@@ -40,7 +40,7 @@ describe('Basic user flow for Website', () => {
     // Right now this function is only checking the first <product-item> it found, make it so that
     // it checks every <product-item> it found
 
-    for(int i = 1; i < prodItemsData.length; i++){
+    for(let i = 1; i < prodItemsData.length; i++){
       if (prodItemsData[i].title.length == 0) { allArePopulated = false; }
       if (prodItemsData[i].price.length == 0) { allArePopulated = false; }
       if (prodItemsData[i].image.length == 0) { allArePopulated = false; }
