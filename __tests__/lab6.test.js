@@ -103,7 +103,7 @@ describe('Basic user flow for Website', () => {
     for (let i = 0; i < productItems.length; i++){
       const shadowRoot = await productItems[i].getProperty('shadowRoot');
       const button = await shadowRoot.$('button');
-      button.click();
+      await button.click();
     }
     
     const cartCount = await page.$('#cart-count');
