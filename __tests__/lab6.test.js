@@ -72,7 +72,7 @@ describe('Basic user flow for Website', () => {
 
     const productItem = await page.$$('product-item');
     const firstProduct = productItem[0];
-    const button = await firstProduct.shadowRoot.querySelector('button');
+    const button = await firstProduct.shadowRoot.getProperty('button');
     
     await button.click();
 
