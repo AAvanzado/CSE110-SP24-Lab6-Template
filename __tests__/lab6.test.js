@@ -94,7 +94,7 @@ describe('Basic user flow for Website', () => {
 
     //unclicking button from previous test
     const productItems = await page.$$('product-item');
-    const firstProduct = productItem[0];
+    const firstProduct = productItems[0];
     const shadowRoot = await firstProduct.getProperty('shadowRoot');
     const button = await shadowRoot.$('button');
     
