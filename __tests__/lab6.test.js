@@ -72,15 +72,13 @@ describe('Basic user flow for Website', () => {
 
     const productItem = await page.$$('product-item');
     const firstProduct = productItem[0];
-    const shadowRoot = await firstProduct.shadowRoot;
-    const button = await shadowRoot.querySelector('button');
-    if(!button){console.error('no button found !!');}
-    else{
+    const button = await firstProduct.shadowRoot.querySelector('button');
+    
     await button.click();
 
     const buttonTextHandle = await button.getProperty('innerText');
     const buttonText = await buttonTextHandle.jsonValue();
-    expect(buttonText).toBe('Remove from Cart');}
+    expect(buttonText).toBe('Remove from Cart');
     
   }, 2500);
 
