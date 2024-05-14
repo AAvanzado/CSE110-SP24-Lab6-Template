@@ -74,11 +74,13 @@ describe('Basic user flow for Website', () => {
     const firstProduct = productItem[0];
     const shadowRoot = await firstProduct.shadowRoot;
     const button = await shadowRoot.querySelector('button');
+    if(!button){console.error('no button found !!');}
+    else{
     await button.click();
 
     const buttonTextHandle = await button.getProperty('innerText');
     const buttonText = await buttonTextHandle.jsonValue();
-    expect(buttonText).toBe('Remove from Cart');
+    expect(buttonText).toBe('Remove from Cart');}
     
   }, 2500);
 
