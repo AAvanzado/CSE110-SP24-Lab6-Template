@@ -100,7 +100,7 @@ describe('Basic user flow for Website', () => {
     
     await button.click();
 
-    (let i = 0; i < productItems.length; i++){
+    for (let i = 0; i < productItems.length; i++){
       const shadowRoot = await productItems[i].getProperty('shadowRoot');
       const button = await shadowRoot.$('button');
       button.click();
