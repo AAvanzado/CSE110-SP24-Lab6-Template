@@ -106,11 +106,11 @@ describe('Basic user flow for Website', () => {
       await button.click();
     }
     
-    //const cartCount = await page.$('#cart-count').getProperty('innerText');
-    //console.log("cartCount: " + cartCount);
-    //expect(cartCount).toBe(20);
+    const cartCountHandle = await page.$('cart-count').getProperty('innerText');;
+    const cartCount = await cartCountHandle.jsonValue();
+    expect(cartCount).toBe(20);
     
-  }, 50000);
+  }, 20000);
 
   // Check to make sure that after you reload the page it remembers all of the items in your cart
   it('Checking number of items in cart on screen after reload', async () => {
