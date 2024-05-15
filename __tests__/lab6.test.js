@@ -121,14 +121,13 @@ describe('Basic user flow for Website', () => {
     // element to make sure that all of their buttons say "Remove from Cart".
     // Also check to make sure that #cart-count is still 20
 
-    const allUpdated = true;
-    
-    const productItems = await page.$$('product-item');
-    
     //reloading page
     await page.goBack();
     await page.goForward();
-
+    
+    const allUpdated = true;
+    const productItems = await page.$$('product-item');
+    
     //checking every button
     for (let i = 0; i < productItems.length; i++){
       const shadowRoot = await productItems[i].getProperty('shadowRoot');
