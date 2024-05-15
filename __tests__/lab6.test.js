@@ -147,13 +147,18 @@ describe('Basic user flow for Website', () => {
     const cartCount = await cartCountText.jsonValue();
     expect(cartCount).toBe("20");
       
-  }, 30000);
+  }, 20000);
 
   // Check to make sure that the cart in localStorage is what you expect
   it('Checking the localStorage to make sure cart is correct', async () => {
     // TODO - Step 5
     // At this point he item 'cart' in localStorage should be 
     // '[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]', check to make sure it is
+    
+    const localStorage = await page.evaluate(() =>  Object.assign({}, window.localStorage));
+    const cartData = await localStorage.getItem('cart');
+    expect(cartData).toBe('[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]');
+    
   });
 
   // Checking to make sure that if you remove all of the items from the cart that the cart
