@@ -120,6 +120,11 @@ describe('Basic user flow for Website', () => {
     // Reload the page, then select all of the <product-item> elements, and check every
     // element to make sure that all of their buttons say "Remove from Cart".
     // Also check to make sure that #cart-count is still 20
+
+    //reloading page
+    await page.goBack();
+    await page.goForward();
+    
   }, 10000);
 
   // Check to make sure that the cart in localStorage is what you expect
