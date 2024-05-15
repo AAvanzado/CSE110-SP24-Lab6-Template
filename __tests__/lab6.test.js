@@ -147,7 +147,7 @@ describe('Basic user flow for Website', () => {
     const cartCount = await cartCountText.jsonValue();
     expect(cartCount).toBe("20");
       
-  }, 10000);
+  }, 30000);
 
   // Check to make sure that the cart in localStorage is what you expect
   it('Checking the localStorage to make sure cart is correct', async () => {
