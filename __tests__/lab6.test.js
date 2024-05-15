@@ -155,11 +155,9 @@ describe('Basic user flow for Website', () => {
     // At this point he item 'cart' in localStorage should be 
     // '[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]', check to make sure it is
     
-    //const localStorage = await page.evaluate(() =>  Object.assign({}, window.localStorage));
     const cartData = await page.evaluate(() => {
       return localStorage.getItem('cart');
     });
-    //const cartData = await localStorage.getItem('cart');
     expect(cartData).toBe('[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]');
     
   });
@@ -171,7 +169,20 @@ describe('Basic user flow for Website', () => {
     // TODO - Step 6
     // Go through and click "Remove from Cart" on every single <product-item>, just like above.
     // Once you have, check to make sure that #cart-count is now 0
-  }, 10000);
+    const productItems = await page.$$('product-item');
+    
+    for (let i = 0; i < productItems.length; i++){
+      const shadowRoot = await productItems[i].getProperty('shadowRoot');
+      const button = await shadowRoot.$('button');
+      await button.click();
+    }
+    
+    const cartCountHandle = await page.$('#cart-count');
+    const cartCountText = await cartCountHandle.getProperty('innerText');
+    const cartCount = await cartCountText.jsonValue();
+    expect(cartCount).toBe("0");
+    
+  }, 20000);
 
   // Checking to make sure that it remembers us removing everything from the cart
   // after we refresh the page
