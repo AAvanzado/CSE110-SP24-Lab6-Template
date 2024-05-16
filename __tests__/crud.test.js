@@ -29,7 +29,7 @@ describe('Basic user flow for Website', () => {
     await page.click('textarea');
     await page.keyboard.type('First');
     
-    //simulating unfocusing the note
+    //simulating unfocusing the note (saving)
     await page.keyboard.press('Tab');
 
     const noteContent = await page.evaluate(() => {
@@ -42,6 +42,19 @@ describe('Basic user flow for Website', () => {
   // Editing and saving previously made note
   it('Editing and saving previously made note', async () => {
     console.log('Editing and saving previously made note...');
+    
+    //typing into area after focusing into note
+    await page.click('textarea');
+    await page.keyboard.type(' and Second');
+
+    //simulating unfocusing the note (saving)
+    await page.keyboard.press('Tab');
+    
+    const noteContent = await page.evaluate(() => {
+      return JSON.parse(localStorage.getItem('stickynotes-notes'));
+    });
+
+    expect(noteContent[0].content).toBe("Second");
   });
   
   // Editing note then reloading while note is focused (should not save edits made)
