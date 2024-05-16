@@ -63,7 +63,7 @@ describe('Basic user flow for Website', () => {
     
      //typing into area after focusing into note
     await page.click('textarea');
-    await page.keyboard.type(' and Third');
+    await page.keyboard.type('BLAH BLAH BLAH');
     
     const noteContent = await page.evaluate(() => {
       return JSON.parse(localStorage.getItem('stickynotes-notes'));
@@ -84,12 +84,34 @@ describe('Basic user flow for Website', () => {
       return JSON.parse(localStorage.getItem('stickynotes-notes'));
     });
 
-    expect(noteContent).toBe("[]");
+    expect(noteContent).toBe([]);
   });
   
   // checking all saved notes remain after reloading
   it('checking all saved notes remain after reloading', async () => {
     console.log('checking all saved notes remain after reloading...');
+
+    //creating new note 
+    const button = await page.$('button');
+    await button.click();
+    
+    //typing into area after focusing into note
+    await page.click('textarea');
+    await page.keyboard.type('Brand New Note !!!');
+    
+    //simulating unfocusing the note (saving)
+    await page.keyboard.press('Tab');
+
+    //simulating page refresh 
+    await page.goBack();
+    await page.goForward();
+    
+    const noteContent = await page.evaluate(() => {
+      return JSON.parse(localStorage.getItem('stickynotes-notes'));
+    });
+
+    //checking notes
+    expect(noteContent[0].content.toBe("Brand New Note !!!");
   });
   
 });
