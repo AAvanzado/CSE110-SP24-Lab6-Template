@@ -20,7 +20,7 @@ describe('Basic user flow for Website', () => {
     
     console.log(noteContent[0]);
     
-    expect(noteContent[0].get("content")).toBe("");
+    expect(noteContent[0].content).toBe("");
   });
 
   // Editing and saving new note
