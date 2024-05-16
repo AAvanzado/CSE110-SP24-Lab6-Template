@@ -17,7 +17,8 @@ describe('Basic user flow for Website', () => {
     const noteContent = await page.evaluate(() => {
       return localStorage.getItem('stickynotes-notes');
     });
-    
+
+    console.log(noteContent[0]);
     expect(noteContent[0].get("content")).toBe("");
   });
 
