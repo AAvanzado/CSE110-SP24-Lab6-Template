@@ -18,8 +18,6 @@ describe('Basic user flow for Website', () => {
       return JSON.parse(localStorage.getItem('stickynotes-notes'));
     });
     
-    console.log(noteContent[0]);
-    
     expect(noteContent[0].content).toBe("");
   });
 
