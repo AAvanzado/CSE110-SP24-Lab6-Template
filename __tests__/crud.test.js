@@ -11,14 +11,19 @@ describe('Basic user flow for Website', () => {
     console.log('Initial Note creation...');
 
     //checking that there are no notes that have been created yet
+    /*
     const noteContent = await page.evaluate(() => {
-      return localStorage.getItem('stickynotes-note');
+      return localStorage.getItem('stickynotes-notes');
     });
     expect(noteContent).toBe('[]');
-
+    */
     //adding new note and then checking for the noteContent update
     const button = await page.$('button');
     await button.click();
+    
+    const noteContent = await page.evaluate(() => {
+      return localStorage.getItem('stickynotes-notes');
+    });
     
     expect(noteContent[0].content).toBe("");
   });
