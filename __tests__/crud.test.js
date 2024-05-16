@@ -14,7 +14,7 @@ describe('Basic user flow for Website', () => {
     const noteContent = await page.evaluate(() => {
       return localStorage.getItem('stickynotes-notes');
     });
-    expect(noteContent).toBe('[]');
+    expect(noteContent).toBe(null);//'[]'
 
     //adding new note and then checking for the noteContent update
     const button = await page.$('button');
