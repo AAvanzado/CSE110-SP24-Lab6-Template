@@ -27,10 +27,10 @@ describe('Basic user flow for Website', () => {
     
     //typing into area after focusing into note
     await page.click('textarea');
-    await keyboard.type('First');
+    await page.keyboard.type('First');
     
     //simulating unfocusing the note
-    await keyboard.press('Tab');
+    await page.keyboard.press('Tab');
 
     const noteContent = await page.evaluate(() => {
       return JSON.parse(localStorage.getItem('stickynotes-notes'));
