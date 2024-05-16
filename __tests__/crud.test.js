@@ -87,7 +87,7 @@ describe('Basic user flow for Website', () => {
       return JSON.parse(localStorage.getItem('stickynotes-notes'));
     });
 
-    expect(noteContent).toBe([]);
+    expect(noteContent).toStrictEqual([]);
   });
   
   // checking all saved notes remain after reloading
@@ -113,7 +113,7 @@ describe('Basic user flow for Website', () => {
     });
 
     //checking notes
-    expect(noteContent[0].content.toBe("Brand New Note !!!"));
+    expect(noteContent[0].content).toBe("Brand New Note !!!"));
   });
   
 });
