@@ -54,17 +54,37 @@ describe('Basic user flow for Website', () => {
       return JSON.parse(localStorage.getItem('stickynotes-notes'));
     });
 
-    expect(noteContent[0].content).toBe("Second");
+    expect(noteContent[0].content).toBe("First and Second");
   });
   
   // Editing note then reloading while note is focused (should not save edits made)
   it('Editing note then reloading while note is focused', async () => {
     console.log('Editing note then reloading while note is focused...');
+    
+     //typing into area after focusing into note
+    await page.click('textarea');
+    await page.keyboard.type(' and Third');
+    
+    const noteContent = await page.evaluate(() => {
+      return JSON.parse(localStorage.getItem('stickynotes-notes'));
+    });
+
+    expect(noteContent[0].content).toBe("First and Second");
   });
   
   // Unfocused note deletion
   it('Unfocused note deletion', async () => {
     console.log('Unfocused note deletion...');
+
+    //note should already be unfocused
+    //typing into area after focusing into note
+    await page.click('textarea', { clickCount: 2 });
+
+    const noteContent = await page.evaluate(() => {
+      return JSON.parse(localStorage.getItem('stickynotes-notes'));
+    });
+
+    expect(noteContent).toBe("[]");
   });
   
   // checking all saved notes remain after reloading
