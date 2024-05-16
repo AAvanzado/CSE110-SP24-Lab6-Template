@@ -64,6 +64,10 @@ describe('Basic user flow for Website', () => {
      //typing into area after focusing into note
     await page.click('textarea');
     await page.keyboard.type('BLAH BLAH BLAH');
+
+    //simulating page refresh 
+    await page.goBack();
+    await page.goForward();
     
     const noteContent = await page.evaluate(() => {
       return JSON.parse(localStorage.getItem('stickynotes-notes'));
