@@ -111,7 +111,7 @@ describe('Basic user flow for Website', () => {
     });
 
     //checking notes
-    expect(noteContent[0].content.toBe("Brand New Note !!!");
+    expect(noteContent[0].content.toBe("Brand New Note !!!"));
   });
   
 });
