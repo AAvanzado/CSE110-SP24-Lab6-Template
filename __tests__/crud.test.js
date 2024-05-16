@@ -21,6 +21,7 @@ describe('Basic user flow for Website', () => {
     console.log(noteContent);
     console.log(noteContent[0]);
     console.log(noteContent[1]);
+    console.log(noteContent[2]);
     
     expect(noteContent[0].get("content")).toBe("");
   });
