@@ -24,6 +24,19 @@ describe('Basic user flow for Website', () => {
   // Editing and saving new note
   it('Editing and saving new note', async () => {
     console.log('Editing and saving new note...');
+    
+    //typing into area after focusing into note
+    await page.click('textarea');
+    await keyboard.type('First');
+    
+    //simulating unfocusing the note
+    await keyboard.press('Tab');
+
+    const noteContent = await page.evaluate(() => {
+      return JSON.parse(localStorage.getItem('stickynotes-notes'));
+    });
+
+    expect(noteContent[0].content).toBe("First");
   });
 
   // Editing and saving previously made note
